@@ -1,0 +1,56 @@
+<div class="general-block-decorator">
+  <div class="row">
+
+    <div class="col-md-12 title title-without-tabs">
+      Configurez la connexion à votre instance Dolibarr
+    </div>
+
+    <div class="form-container">
+      <div class="col-md-12">
+
+        {form name="Dolithelia.config"}
+          <form method="POST" id="Dolithelia-form" action="{url path="/admin/module/Dolithelia/save"}" {form_enctype form=$form} class="clearfix">
+
+            {form_hidden_fields form=$form}
+
+            {form_field form=$form field='base_url'}
+              <div class="form-group {if $error}has-error{/if}">
+                <label class="control-label" for="{$label_attr.for}">
+                  {$label}
+                  <span class="required">*</span>
+                  {form_error form=$form field="base_url"}
+                      <br />
+                      <span class="error">{$message}</span>
+                  {/form_error}
+                </label>
+                <input id="Dolithelia_config-id-base_url" class="form-control " type="text" required="" aria-required="true" value="{$value}" name="{$name}">
+                <small>Renseignez l'URL de base de votre instance de l'API Dolibarr : par exemple : domain.fr/htdocs/api/index.php. <strong>Attention à bien terminer votre adresse par un /</strong></small>
+              </div>
+            {/form_field}
+
+            {form_field form=$form field='api_key'}
+            <div class="form-group {if $error}has-error{/if}">
+              <label class="control-label" for="{$label_attr.for}">
+                {$label}
+                <span class="required">*</span>
+                {form_error form=$form field="api_key"}
+                    <br />
+                    <span class="error">{$message}</span>
+                {/form_error}
+              </label>
+              <input id="Dolithelia_config-id-api_key" class="form-control " type="text" required="" aria-required="true" value="{$value}" name="{$name}">
+            </div>
+            {/form_field}
+
+
+
+            <button type="submit" id="Dolithelia-save" name="Dolithelia_save" value="save" class="form-submit-button btn btn-sm btn-default" title="Save">Valider</button>
+          </form>
+        {/form}
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

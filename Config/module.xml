@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="http://thelia.net/schema/dic/module"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://thelia.net/schema/dic/module http://thelia.net/schema/dic/module/module-2_2.xsd">
+    <fullnamespace>Dolithelia\Dolithelia</fullnamespace>
+
+    <descriptive locale="fr_FR">
+        <title>Dolithelia</title>
+        <description>Envoyer les clients depuis Thelia vers votre CRM Dolibarr</description>
+    </descriptive>
+
+    <languages>
+        <language>fr_FR</language>
+    </languages>
+    <version>1.0.0</version>
+    <authors>
+        <author>
+            <name>Kevin</name>
+        </author>
+    </authors>
+    <type>classic</type>
+    <thelia>0.5</thelia>
+    <stability>prod</stability>
+</module>
