@@ -17,11 +17,11 @@ Configurez votre clef API et l'URL de base de votre instance Dolibarr.
 ## Elements en place 
 
 * Remonter client dans Dolibarr à la création
-
+* Modification compte client
 
 ## Elements à mettre en place 
 
-* Modification compte client
+
 * Création / Modification de produits
 * Remonter les commandes payées
 
