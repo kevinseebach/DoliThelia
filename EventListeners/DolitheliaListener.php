@@ -116,7 +116,6 @@ class DolitheliaListener extends BaseAction implements EventSubscriberInterface
 
   public function updateCustomer(CustomerCreateOrUpdateEvent $event)
   {
-        file_put_contents("poiodfsqfs0.txt","Update function running");
     $customer = $event->getCustomer();
 
     $clientSearch = json_decode( $this->CallAPI("GET", "thirdparties", array(
@@ -131,12 +130,13 @@ class DolitheliaListener extends BaseAction implements EventSubscriberInterface
       {
         $tel=$adr[0]->getPhone();
       }
-      else if( is_null($adr[0]->getCellphone()) == false){
+      else if(is_null($adr[0]->getCellphone()) == false){
         $tel=$adr[0]->getCellphone();
       }
       else{
         $tel=null;
       }
+
       $completeAdressObject = $customer->getAddressesJoinCountry();
       $countryObject = $adr[0]->getCountry();
       $countryName = $countryObject->getTitle();
@@ -177,8 +177,6 @@ class DolitheliaListener extends BaseAction implements EventSubscriberInterface
         $newClientResult = json_decode($newClientResult, true);
         $clientDoliId = $newClientResult;
       }
-
-
 
   }
 
