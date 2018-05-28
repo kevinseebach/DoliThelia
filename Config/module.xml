@@ -3,22 +3,29 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://thelia.net/schema/dic/module http://thelia.net/schema/dic/module/module-2_2.xsd">
     <fullnamespace>Dolithelia\Dolithelia</fullnamespace>
+    <descriptive locale="en_US">
+        <title>Dolithelia</title>
+        <description>Send customers and paid orders to your dolibarr CRM</description>
 
+    </descriptive>
     <descriptive locale="fr_FR">
         <title>Dolithelia</title>
-        <description>Envoyer les clients depuis Thelia vers votre CRM Dolibarr</description>
+        <description>Envoyer les clients et les commandes payées vers votre CRM Dolibarr</description>
     </descriptive>
 
     <languages>
+        <language>en_US</language>
         <language>fr_FR</language>
     </languages>
     <version>1.0.0</version>
     <authors>
         <author>
             <name>Kevin</name>
+            <email></email>
         </author>
     </authors>
     <type>classic</type>
-    <thelia>0.5</thelia>
+
+    <thelia>2.3.0</thelia>
     <stability>prod</stability>
 </module>
