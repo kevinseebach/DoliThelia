@@ -75,7 +75,7 @@ class DolitheliaListener extends BaseAction implements EventSubscriberInterface
       $tel=null;
     }
 
-    $completeAdressObject = $customer->getAddressesJoinCountry();
+    $completeAdressObject = $client->getAddressesJoinCountry();
     $countryObject = $adr[0]->getCountry();
     $countryName = $countryObject->getTitle();
     $countrySearch = json_decode( $this->CallAPI("GET", "dictionarycountries", array(
