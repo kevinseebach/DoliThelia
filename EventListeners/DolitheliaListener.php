@@ -10,7 +10,7 @@ use Thelia\Core\Event\Customer\CustomerCreateOrUpdateEvent;
 use Thelia\Core\Event\Customer\CustomerEvent;
 use Thelia\Core\Event\Order\OrderEvent;
 use Thelia\Core\HttpFoundation\Request;
-
+use Thelia\Core\Event\Product\ProductEvent;
 use Thelia\Model\Base\ProductSaleElementsQuery;
 
 
@@ -24,6 +24,7 @@ class DolitheliaListener extends BaseAction implements EventSubscriberInterface
       return [
           TheliaEvents::AFTER_CREATECUSTOMER => array("sendCust", 1),
           TheliaEvents::CUSTOMER_UPDATEACCOUNT => array("updateCustomer", 3),
+	  TheliaEvents::AFTER_CREATEPRODUCT => array("createProd", 3),
       ];
   }
 
@@ -179,5 +180,37 @@ class DolitheliaListener extends BaseAction implements EventSubscriberInterface
       }
 
   }
+	
+	
+	
+	public function createProd(ProductEvent $event)
+  {
+    $p = $event->getProduct();
+
+    $padd = [
+      "label" =>  $p->getTitle(),
+      "description" => $p->getDescription(),
+      "ref" => $p->getRef(),
+      "status"=>1,
+    ];
+
+    $exist= json_decode($this->CallAPI("GET", "products", array(
+        "sortfield" => "t.ref",
+        "sortorder" => "ASC",
+        "limit" => "1",
+        "mode" => "0",
+        "sqlfilters" => "(t.ref:=:'".$p->getRef()."')"
+      )),true);
+
+      if(isset($exist["error"]) == true){
+        $createdProd = $this->CallAPI("POST","products", json_encode($padd));
+        $createdProdResult = json_decode($createdProd, true);
+
+      }
+      else{
+        throw new \Exception("Ref. ".$p->getRef()." already exist in your Dolibarr instance. No import done");
+      }
+  }
+
 
 }
